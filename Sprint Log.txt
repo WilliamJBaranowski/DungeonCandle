@@ -14,17 +14,14 @@ FEATURES:
     - Save submenu to pick save slot
 - Beacon doors
 - Conveyor platforms
-- Wall shackels decoration
+- Water droplets that fall from ceiling and disable candle
 
 ART:
-- Decrepit stone texture
 - Mossy stone texture
 - Stone pillar base
-- Railings
+- Wall shackels decoration
 - Carpet
 - Tapestry
-- Background candlesticks
-- Background wall torch
 - Icy ground (for cave area)
 - Bridge
 
@@ -37,6 +34,13 @@ BUGS:
 - Enemy Hitbox knockback doesn't work along x axis
 - Candle only lights based on OnTriggerEnter, not OnTriggerStay
 
+Week 2/6/2017
+- Background candlesticks
+- Background wall torch
+X Decrepit stone texture
+- Destructible pile of bones object
+- Enemy that pokes head out from pile of bones and throws bones at player
+- Design first boss
 
 Week 1/30/2017
 X Make saved bool arrays dictionaries instead
@@ -57,6 +61,7 @@ X NPC Dialogue Collider
     X Camera focuses on speaking character
 X Start network diagram of level design
 X Shackelled enemy (for dungeon area)
+X Destructible wood cube
 
 Week 1/23/2017
 X Fix bat death fading animation to work with smoke-puff death animation

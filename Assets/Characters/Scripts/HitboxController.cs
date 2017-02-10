@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class HitboxController : MonoBehaviour {
+    private SceneController sc;
+
     private bool processing;
     private float startTimestamp;
     private bool[] hitboxStarted;
@@ -11,9 +13,13 @@ public class HitboxController : MonoBehaviour {
     public float[] hitboxEnableTime;
     public float[] hitboxDisableTime;
 
+    void Awake () {
+        sc = GameObject.Find("Scene Controller").GetComponent<SceneController>();
+    }
+
 	// Use this for initialization
 	void Start () {
-
+        sc = GameObject.Find("Scene Controller").GetComponent<SceneController>();
 	}
 	
 	// Update is called once per frame
@@ -24,10 +30,10 @@ public class HitboxController : MonoBehaviour {
     void FixedUpdate () {
         if (processing == true) {
             for (int i = 0; i < hitboxStarted.Length; i++) {
-                if (hitboxStarted[i] == false && Time.time > startTimestamp + hitboxEnableTime[i]) {
+                if (hitboxStarted[i] == false && sc.gameTime > startTimestamp + hitboxEnableTime[i]) {
                     hitboxStarted[i] = true;
                     EnableHitbox(i);
-                } else if (hitboxFinished[i] == false && Time.time > startTimestamp + hitboxDisableTime[i]) {
+                } else if (hitboxFinished[i] == false && sc.gameTime > startTimestamp + hitboxDisableTime[i]) {
                     hitboxFinished[i] = true;
                     DisableHitbox(i);
                     hitboxFinishedCount += 1;
@@ -41,7 +47,7 @@ public class HitboxController : MonoBehaviour {
 
     public void StartHitboxProcess () {
         processing = true;
-        startTimestamp = Time.time;
+        startTimestamp = sc.gameTime;
         hitboxStarted = new bool[hitboxEnableTime.Length];
         hitboxFinished = new bool[hitboxEnableTime.Length];
         hitboxFinishedCount = 0;

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Vitality : MonoBehaviour {
     private Animator anim;
+    private SceneController sc;
 
     public int maxLife;
     public int currentLife;
@@ -25,11 +26,11 @@ public class Vitality : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-    
+        sc = GameObject.Find("Scene Controller").GetComponent<SceneController>();
     }
     
     void FixedUpdate () {
-        if (dying == true && Time.time >= deathTimestamp + deathTime) {
+        if (dying == true && sc.gameTime >= deathTimestamp + deathTime) {
             Die();
         }
     }
@@ -41,9 +42,9 @@ public class Vitality : MonoBehaviour {
     }
 
     public void TakeDamage (int amount) {
-        if (Time.time >= hitTimestamp + flinchTime && dying == false) {
+        if (sc.gameTime >= hitTimestamp + flinchTime && dying == false) {
 
-            hitTimestamp = Time.time;
+            hitTimestamp = sc.gameTime;
             currentLife = Mathf.Max(currentLife - amount, 0);
 
             if (currentLife <= 0) {
@@ -57,7 +58,7 @@ public class Vitality : MonoBehaviour {
     void StartDeath () {
         dying = true;
         anim.SetTrigger("die");
-        deathTimestamp = Time.time;
+        deathTimestamp = sc.gameTime;
         foreach (Transform child in transform) {
             if (child.gameObject.name.Contains("Hitbox")) {
                 Destroy(child.gameObject);

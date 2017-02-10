@@ -7,6 +7,7 @@ public class LightChaseEnemy : MonoBehaviour {
     private SpriteRenderer sr;
     private Vitality vt;
     private TerrainDetector td;
+    private SceneController sc;
     private Rigidbody[] rbChain =  new Rigidbody[24];
     private ConfigurableJoint[] rbJoint = new ConfigurableJoint[24];
 
@@ -75,6 +76,8 @@ public class LightChaseEnemy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        sc = GameObject.Find("Scene Controller").GetComponent<SceneController>();
+
         transform.position = new Vector3(transform.position.x, transform.position.y, z + zSleepOffset);
     }
 
@@ -89,7 +92,7 @@ public class LightChaseEnemy : MonoBehaviour {
         if (vt.currentLife > 0 && state != -1) {
             if (state == 0 && AggroTriggered() == true) {
                 Wake();
-            } else if (state == 1 && Time.time >= wakeTimestamp + wakeTime) {
+            } else if (state == 1 && sc.gameTime >= wakeTimestamp + wakeTime) {
                 if (AggroTriggered() == true) {
                     StartCharge(true);
                 } else {
@@ -98,12 +101,12 @@ public class LightChaseEnemy : MonoBehaviour {
             } else if (state == 2) {
                 if (AggroTriggered() == false) {
                     StartSleep();
-                } else if (Time.time >= chargeTimestamp + chargeTime || td.Detected() == true) {
+                } else if (sc.gameTime >= chargeTimestamp + chargeTime || td.Detected() == true) {
                     StopCharge();
                 }
-            } else if (state == 3 && Time.time >= stopTimestamp + stopTime) {
+            } else if (state == 3 && sc.gameTime >= stopTimestamp + stopTime) {
                 StartCharge(false);
-            } else if (state == 4 && Time.time >= sleepTimestamp + sleepTime) {
+            } else if (state == 4 && sc.gameTime >= sleepTimestamp + sleepTime) {
                 Sleep();
             }
         } else {
@@ -214,7 +217,7 @@ public class LightChaseEnemy : MonoBehaviour {
 
     void Wake () {
         state = 1;
-        wakeTimestamp = Time.time;
+        wakeTimestamp = sc.gameTime;
         anim.SetTrigger("wake");
     }
 
@@ -225,19 +228,19 @@ public class LightChaseEnemy : MonoBehaviour {
             rb.velocity = new Vector3(0f, 3f, 0f);
         }
         anim.SetTrigger("chase");
-        chargeTimestamp = Time.time;
+        chargeTimestamp = sc.gameTime;
     }
 
     void StopCharge () {
         state = 3;
         rb.velocity = new Vector3(0f, 0f, 0f);
         anim.SetTrigger("wake");
-        stopTimestamp = Time.time;
+        stopTimestamp = sc.gameTime;
     }
 
     void StartSleep () {
         state = 4;
-        sleepTimestamp = Time.time;
+        sleepTimestamp = sc.gameTime;
     }
 
     void CancelSleep () {

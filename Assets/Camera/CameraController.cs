@@ -16,7 +16,6 @@ public class CameraController : MonoBehaviour {
     public Vector2 cameraMax;
 
     // Variables for making the camera focus on a point:
-    private bool focused;
     private float savedCameraHeight;
     private float savedCameraDepth;
     private Vector2 savedCameraMin;
@@ -86,8 +85,6 @@ public class CameraController : MonoBehaviour {
     }
 
     public void FocusCamera (Vector2 focusPoint, float focusDepth, float customScrollRate = -1f, float customZoomRate = -1f) {
-        focused = true;
-
         savedCameraHeight = cameraHeight;
         savedCameraDepth = cameraDepth;
         savedCameraMin = cameraMin;
@@ -108,8 +105,6 @@ public class CameraController : MonoBehaviour {
     }
 
     public void ReleaseCamera () {
-        focused = false;
-
         cameraHeight = savedCameraHeight;
         cameraDepth = savedCameraDepth;
         cameraMin = savedCameraMin;

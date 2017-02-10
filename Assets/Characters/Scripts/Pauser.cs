@@ -32,12 +32,14 @@ public class Pauser : MonoBehaviour {
     private void Pause () {
         paused = true;
 
-        savedVelocity = rb.velocity;
-        savedGravity = rb.useGravity;
+        if (rb != null) {
+            savedVelocity = rb.velocity;
+            savedGravity = rb.useGravity;
 
-        rb.velocity *= 0f;
-        rb.useGravity = false;
-        rb.isKinematic = true;
+            rb.velocity *= 0f;
+            rb.useGravity = false;
+            rb.isKinematic = true;
+        }
 
         anim.enabled = false;
     }
@@ -45,9 +47,11 @@ public class Pauser : MonoBehaviour {
     private void Unpause () {
         paused = false;
 
-        rb.velocity = savedVelocity;
-        rb.useGravity = savedGravity;
-        rb.isKinematic = false;
+        if (rb != null) {
+            rb.velocity = savedVelocity;
+            rb.useGravity = savedGravity;
+            rb.isKinematic = false;
+        }
 
         anim.enabled = true;
     }

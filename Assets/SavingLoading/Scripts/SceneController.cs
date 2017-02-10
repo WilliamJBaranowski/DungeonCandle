@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour {
     public Vector3 testLoadStartPosition;
 
     // Pausing variables:
+    public float gameTime;
     public bool paused;
 
     void Awake () {
@@ -35,7 +36,9 @@ public class SceneController : MonoBehaviour {
     }
 
     void Update () {
-
+        if (paused == false) {
+            gameTime += Time.deltaTime;
+        }
     }
 
     // ------------------------------- //

@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerFlameAttack : MonoBehaviour {
 	private SpriteRenderer sr;
 	private HitboxController hc;
+    private SceneController sc;
 	private Transform playerTransform;
 	private PlayerController pc;
 	private float createTimestamp;
@@ -17,7 +18,8 @@ public class PlayerFlameAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		createTimestamp = Time.time;
+        sc = GameObject.Find("Scene Controller").GetComponent<SceneController>();
+		createTimestamp = sc.gameTime;
 		hc.StartHitboxProcess();
 	}
 
@@ -30,14 +32,14 @@ public class PlayerFlameAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time >= createTimestamp + lifetime) {
+		if (sc.gameTime >= createTimestamp + lifetime) {
 			pc.illumCount -= 1;
 			Destroy(gameObject);
 		}
 	}
 
 	void FixedUpdate () {
-		if (Time.time <= createTimestamp + lifetime / 2) {
+		if (sc.gameTime <= createTimestamp + lifetime / 2) {
 			if (sr.flipX == false && transform.position.x < playerTransform.position.x) {
 				transform.position = new Vector3(playerTransform.position.x, transform.position.y, transform.position.z);
 			} else if (sr.flipX == true && transform.position.x > playerTransform.position.x) {

@@ -15,6 +15,12 @@ FEATURES:
 - Beacon doors
 - Conveyor platforms
 - Water droplets that fall from ceiling and disable candle
+- UI for tracking number of beacon torches lit:
+    - Defaults to hidden
+    - UI element appears after lighting beacon torch for short time
+    - Appears when standing near beacon door
+    - Appears when game is paused
+- Pause menu
 
 ART:
 - Mossy stone texture
@@ -23,23 +29,31 @@ ART:
 - Carpet
 - Tapestry
 - Icy ground (for cave area)
-- Bridge
+- Background candlesticks
 
 IMPROVEMENTS:
 - Custom death animations
 - Smoke effect for torches?
 - Player death animation using pause feature
+- Some visual cue to explain whether player is lit/visible to enemies or not
 
 BUGS:
 - Enemy Hitbox knockback doesn't work along x axis
 - Candle only lights based on OnTriggerEnter, not OnTriggerStay
 
 Week 2/6/2017
-- Background candlesticks
-- Background wall torch
+X Bridge
+X Background wall torch
 X Decrepit stone texture
-- Destructible pile of bones object
-- Enemy that pokes head out from pile of bones and throws bones at player
+X Pile of bones object
+X Enemy that pokes head out from pile of bones and throws bones at player
+    X Bone pile art
+    X Enemy art
+    X Enemy programming
+    X Projectile art
+    X Projectile programming
+    X Shooter enemy script: manages creation of projectile
+X Replace Time.time in majority of scripts with sc.gameTime to allow pausing
 - Design first boss
 
 Week 1/30/2017

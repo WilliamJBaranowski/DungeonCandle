@@ -1,0 +1,28 @@
+Game Pitch: Dragon Candle is a exploration-based 2.5D platformer where you play as a prisoner trying to escape from an evil monarch's castle using only a candle. Fortunately it's not just any candle, as blowing it out creates a momentary burst of flame. Sounds great until you realize that now you're standing in a dark and dangerous dungeon with only an unlit candle...
+
+The castle itself is a large interconnected environment full of wacky characters and dangerous creatures. Locked doors section off various parts of the castle and can only be opened by finding and lighting the correct number of magical Beacons with your candle.
+
+Technology: Unity 5
+
+Project Status: Most of the core systems are fully complete or complete enough to work with including saving/loading, player controls, the candle weapon and its interactions with the environment, a handful of enemies, destructible terrain, character dialogue, etc. I'm currently a solo developer.
+
+What I can do:
+- Implement gameplay in Unity
+- Design game rules and systems
+- Design levels
+- Animate sprites
+- Make a soundtrack: 
+- Draw so-so pixel art: 
+
+What I need:
+I am primarily looking for creative help from someone who can implement their ideas in one of two ways:
+1) as a lead artist who will replace my so-so pixel art
+2) as a second Unity developer
+
+By "creative help" I mean someone who is interested in one or more of the following:
+- Creating characters to inhabit the castle
+- Creating simple story arcs
+- Writing dialogue
+- Inventing sub-environments within the castle (like the dungeons you start in, the sewers below the castle, the courtyard/gardens, etc) and what makes them unique in terms of gameplay, inhabitants, aesthetics, etc.
+
+I have some ability and interest in these sorts of creative tasks, but my primary skill is in turning ideas like these into fun gameplay. If you are either an artist interested in taking some ownership of these bigger creative tasks, or a Unity developer interested in focusing on the creative stuff first shoot me a message!
